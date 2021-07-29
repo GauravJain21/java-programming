@@ -1,8 +1,6 @@
-package genes;
 
 public class FindGeneSimpleAndTest {
     public String findGeneSimple(String dna) {
-        String gene = "";
         int startIndex = dna.indexOf("ATG");
         if(startIndex == -1) {
             System.out.println("Gene doesn't exist in DNA");
