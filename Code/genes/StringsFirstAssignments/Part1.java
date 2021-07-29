@@ -1,5 +1,6 @@
+package StringsFirstAssignments;
 
-public class FindGeneSimpleAndTest {
+public class Part1 {
     public String findGeneSimple(String dna) {
         int startIndex = dna.indexOf("ATG");
         if(startIndex == -1) {
@@ -18,15 +19,15 @@ public class FindGeneSimpleAndTest {
         return dna.substring(startIndex, endIndex + 3);
     }
     public void testFindGeneSimple() {
-        String dna = "AATGCGTAATATGGT";
-        System.out.println("DNA strand is " + dna);
-        String gene = findGeneSimple(dna);
-        if(gene.length() != 0) {
-            System.out.println("Gene is " + gene);
+        String[] dnas = {"AATGCGTAATATGGT", "ATG", "TAA", "AGGT", "ATGGTAA"};
+        for(String dna: dnas) {
+            System.out.println("DNA strand is " + dna);
+            System.out.println("Gene is " + findGeneSimple(dna));
         }
+        return;
     }
     public static void main(String[] args) {
-        FindGeneSimpleAndTest findGeneSimpleAndTest = new FindGeneSimpleAndTest();
-        findGeneSimpleAndTest.testFindGeneSimple();
+        Part1 part1 = new Part1();
+        part1.testFindGeneSimple();
     }
 }
