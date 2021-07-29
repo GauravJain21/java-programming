@@ -5,7 +5,7 @@
 ./**/package.bluej
 
 # User-specific stuff
-./**/.idea/*
+./**/.idea
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
