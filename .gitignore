@@ -1,6 +1,7 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
+.DS_Store
 # BlueJ
 ./**/package.bluej
 
@@ -74,4 +75,7 @@ fabric.properties
 .idea/httpRequests
 
 # Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
+.idea/caches/build_file_checksums.ser.DS_Store
+.idea/
+perimeter_quiz/.idea/
+perimeter_quiz/package.bluej
