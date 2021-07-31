@@ -6,15 +6,25 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.File;
 
 public class CSVMax {
+    public CSVRecord getLargestOfTwo(CSVRecord currentRow, CSVRecord largestSoFar) {
+        if(largestSoFar == null) {
+            largestSoFar = currentRow;
+        }
+        else {
+            double currentTemp = Double.parseDouble(currentRow.get("TemperatureF"));
+            double largestSoFarTemp = Double.parseDouble(largestSoFar.get("TemperatureF"));
+            if(currentTemp > largestSoFarTemp) {
+                largestSoFar = currentRow;
+            }
+        }
+        return largestSoFar;
+    }
+
     public CSVRecord hottestHourInFile(CSVParser parser) {
         double maxTemp = 0;
         CSVRecord maxRecord = null;
         for (CSVRecord record : parser) {
-            double currentTemp = Double.parseDouble(record.get("TemperatureF"));
-            if (maxTemp < currentTemp) {
-                maxTemp = currentTemp;
-                maxRecord = record;
-            }
+            maxRecord = getLargestOfTwo(record, maxRecord);
         }
         return maxRecord;
     }
@@ -26,10 +36,7 @@ public class CSVMax {
             FileResource fr = new FileResource(f.getAbsolutePath());
             CSVParser parser = fr.getCSVParser();
             CSVRecord currHottestHour = hottestHourInFile(parser);
-            double currentTemp = Double.parseDouble(currHottestHour.get("TemperatureF"));
-            if(hottestHour == null || currentTemp > Double.parseDouble(hottestHour.get("TemperatureF"))) {
-                hottestHour = currHottestHour;
-            }
+            hottestHour = getLargestOfTwo(currHottestHour, hottestHour);
         }
         return hottestHour;
     }
