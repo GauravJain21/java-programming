@@ -56,13 +56,13 @@ public class WhichCountriesExport {
         String exportOfInterest = "coffee";
         //listExporters(parser, exportOfInterest);
         parser = fr.getCSVParser();
-        System.out.println(countryInfo(parser, "Germany"));
+        System.out.println(countryInfo(parser, "Nauru"));
         parser = fr.getCSVParser();
         listExportersTwoProducts(parser, "gold", "diamonds");
         parser = fr.getCSVParser();
-        System.out.println(numberOfExporters(parser, "gold"));
+        System.out.println(numberOfExporters(parser, "sugar"));
         parser = fr.getCSVParser();
-        bigExporters(parser, "$999,999,999");
+        bigExporters(parser, "$999,999,999,999");
     }
 
     public static void main(String[] args) {
