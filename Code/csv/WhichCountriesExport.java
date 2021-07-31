@@ -68,6 +68,9 @@ public class WhichCountriesExport {
     public static void main(String[] args) {
         WhichCountriesExport obj = new WhichCountriesExport();
         obj.tester();
+        String num = "1.3";
+        int h = Integer.parseInt(num);
+        System.out.println(h);
     }
 
 }
