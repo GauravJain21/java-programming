@@ -1,6 +1,9 @@
 package StringsThirdAssignments;
 
+import edu.duke.FileResource;
 import edu.duke.StorageResource;
+
+import java.util.Locale;
 
 public class Part2 {
     private final String[] dnas = {"AATGAAATAATATGGT", "ATG", "TAA", "AGGT", "ATGTAA", "gatgctataat", "ATGTAATGATAG", "ATGTAAATGTAGATGTGA", "CG"};
@@ -76,10 +79,18 @@ public class Part2 {
                 cgRatioCount++;
                 cgRatioStrings.add(str);
             }
+            System.out.println("CTG count: " + countCTG(str));
             StorageResource geneList = getAllGenes(str);
+            int counter = 0, longerThan60 = 0;
             for (String gene : geneList.data()) {
                 longestGeneLength = Math.max(longestGeneLength, gene.length());
+                if (gene.length() > 60) {
+                    longerThan60++;
+                }
+                counter++;
             }
+            System.out.println("Total Number of Genes: " + counter);
+            System.out.println("Longer than 60: " + longerThan60);
         }
         System.out.println("Count of strings longer than 9 character: " + longerThanNineCharCount);
         if(longerThanNineCharCount != 0) {
@@ -94,6 +105,7 @@ public class Part2 {
             }
         }
         System.out.println("Longest Gene Length: " + longestGeneLength);
+
     }
     public void testCgRatio() {
         for (String str : dnas) {
@@ -110,9 +122,8 @@ public class Part2 {
     }
     public void testProcessGene() {
         StorageResource dnaList = new StorageResource();
-        for (String dna : dnas) {
-            dnaList.add(dna);
-        }
+        FileResource fr = new FileResource("/Users/gauravjain/Desktop/Java Programming- Solving Problems with Software/Projects/Code/genes/StringsThirdAssignments/GRch38dnapart.fa");
+        dnaList.add(fr.asString().toUpperCase(Locale.ROOT));
         processGenes(dnaList);
     }
 
@@ -120,6 +131,7 @@ public class Part2 {
         Part2 driver = new Part2();
         driver.testCgRatio();
         driver.testCTGCount();
+        System.out.println("Start test Process Gene");
         driver.testProcessGene();
     }
 
